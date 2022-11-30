@@ -1,0 +1,4 @@
+div#LoginSignOut amplify-sign-out#SignOutButton {
+    min-width: 0;
+    --padding: 0;
+} 
