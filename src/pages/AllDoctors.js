@@ -7,7 +7,33 @@ import * as FaIcons from 'react-icons/fa';
 
 export default function AllDoctors()
 {
-  
+  const [show] = useState(false);
+  const [showAlert] = useState(false);
+  const [fields, handleFieldChange] = FormDataFieldsFunc({
+    fistName: "",
+    lastName: "",
+    phoneNumber: "",
+    address: "",
+  });
+  const history = useHistory();
+
+  const [listDoc, setListDoc] = useState([]);
+
+  const [updateModal, setUpdateModal] = React.useState(false);
+
+  const [singleDoctor, setEachDoctor] = useState({
+    id: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    address: ""
+    });
+  const [errorMessages, setErrorMessages] = useState([]);
+
+  useEffect(() => {
+    list();
+
+  },[]);
 
   return(
     <div>
