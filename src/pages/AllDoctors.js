@@ -34,7 +34,21 @@ export default function AllDoctors()
     list();
 
   },[]);
+  
+  async function deleteDoctorInformation(id)
+  {
+    try
+    {
+      await API.graphql({ query: deleteDoctorInfo, variables: { input: { id : id}}});
+    } catch(e)
+    {
+      console.error('error while deleting the doctor', e);
+      setErrorMessages(e.errors);
+    }
+    alert("Doctor Deleted!");
+    list();
 
+  }
   return(
     <div>
       <h5 style={{marginTop: '10px', marginBottom: '10px'}}>Doctors</h5>
