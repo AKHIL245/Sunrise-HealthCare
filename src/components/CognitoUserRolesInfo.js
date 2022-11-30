@@ -10,3 +10,7 @@ async function RoleInfo(role) {
     const data = detailsofUser.signInUserSession.accessToken.payload
     return data && data['cognito:groups'] && data['cognito:groups'].includes(role);
 }
+//Function to get the role Admin
+export async function isRoleAdmin() {
+    return RoleInfo('Admins');
+}
