@@ -34,7 +34,7 @@ export default function AllDoctors()
     list();
 
   },[]);
-  
+
   async function deleteDoctorInformation(id)
   {
     try
@@ -47,6 +47,20 @@ export default function AllDoctors()
     }
     alert("Doctor Deleted!");
     list();
+
+  }
+  async function list()
+  {
+    try{
+      const apiData = await API.graphql({ query: getAllDoctors });
+
+      
+    setListDoc(apiData.data.listDoctors.items);
+
+    } catch (e)
+    {
+      console.log("Error while fetching Doctors...",e);
+    }
 
   }
   return(
