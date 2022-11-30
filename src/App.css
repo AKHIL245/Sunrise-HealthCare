@@ -1,0 +1,206 @@
+table tbody th {
+  text-align: left;
+  font-weight: normal;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+amplify-s3-image {
+  --height: 60px;
+  --width: 60px;
+}
+
+table tr.even {
+  background-color: #fde9d9;
+}
+
+.navbar-toggle {
+  background-color: #1bacac;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.App {
+  text-align: center;
+}
+
+
+
+.nav-text a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.err {
+  color: red;
+  font-family: "Courier New", monospace;
+}
+
+table {
+  margin: auto;
+  width: 600px;
+  border-collapse: collapse;
+  border: 1px solid #fff; /*for older IE*/
+  border-style: hidden;
+}
+
+table caption {
+  background-color: #1bacac;
+  color: #fff;
+  font-size: x-large;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+}
+
+table thead th {
+  padding: 8px;
+  background-color: #1bacac;
+  font-size: large;
+  color: white;
+}
+
+
+table th,
+table td {
+  padding: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #1bacac #ccc;
+}
+
+table td {
+  text-align: right;
+}
+
+table tbody th {
+  text-align: left;
+  font-weight: normal;
+}
+
+
+table tr.even {
+  background-color: #fde9d9;
+}
+
+button,
+.badge {
+  background-color: #1bacac;
+  border: none;
+  color: white;
+  padding: 5px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: small;
+}
+
+.navbar {
+  background-color: #1bacac;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar .title {
+  flex: 1;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.menu-bars {
+  color: white;
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+}
+
+table tfoot {
+  font-weight: bold;
+  font-size: large;
+  background-color: #687886;
+  color: #fff;
+}
+
+span {
+  margin-left: 16px;
+}
+
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
+.nav-text a:hover {
+  background-color: #ffffff;
+  color: #1bacac;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.nav-menu {
+  background-color: #1bacac;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
