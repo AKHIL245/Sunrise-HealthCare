@@ -14,3 +14,7 @@ async function RoleInfo(role) {
 export async function isRoleAdmin() {
     return RoleInfo('Admins');
 }
+//Function to get the role Doctor
+export async function isRoleDoctor() {
+    return RoleInfo('Doctor');
+}
