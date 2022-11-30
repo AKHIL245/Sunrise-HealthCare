@@ -18,3 +18,18 @@ export async function isRoleAdmin() {
 export async function isRoleDoctor() {
     return RoleInfo('Doctor');
 }
+export async function sessionInfo() {
+    const sDetails = await sessionDetails();
+    const cognitoSessionUsername = sDetails.signInUserSession.accessToken.payload.username;
+    const isRoleDoc = await isRoleDoctor();
+    const isRoleAdm = await isRoleAdmin();
+    if(isRoleDoc){
+        return ["Doctor", cognitoSessionUsername]
+    }
+    else if(isRoleAdm)
+    {
+        return ["Admin", cognitoSessionUsername]
+    }else {
+        return ["Patient", cognitoSessionUsername]
+    }
+}
