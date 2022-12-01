@@ -44,5 +44,53 @@ export default function ModalPrescription(props) {
         setError(event.errors);
     }
   }
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
 
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+         Prescription
+        </Modal.Title>
+      </Modal.Header>
+
+      <Modal.Body>
+      <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Uploaded Date</th>
+              <th>Download</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+         <tbody>
+            {
+              presc.map(items => (
+                <tr key={items.id}>
+                  <td>{items.description}</td>
+                  <td>{items.createdAt}</td>
+                  <td>
+                    {
+                      items.content && <a href={items.content} download={items.fileName}>
+                        {
+                          <AmplifyS3Image level="public" imgKey={items.fileName} alt={items.fileName.slice(items.fileName.lastIndexOf('/') + 1)} /> 
+                        }
+                      </a>
+                    }
+                  </td>
+                  <td><button onClick={() => removePresc(items.id)}>Delete</button></td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </Modal.Body>
+
+    </Modal>
+  );
 }
