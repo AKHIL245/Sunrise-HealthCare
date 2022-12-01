@@ -1,0 +1,48 @@
+type Patient @model {
+  id: ID!
+  firstName: String!
+  lastName: String
+  insuranceNumber: String
+  ssn: String
+  birthDate: AWSDateTime!
+  phone: String
+  address: String
+  sex: String
+  email: String!
+}
+
+type Doctor @model {
+  id: ID!
+  firstName: String!
+  lastName: String
+  phone: String
+  address: String
+}
+
+type Prescription @model {
+  id: ID!
+  appointmentId: ID!
+  patientId: ID!
+  doctorId: ID
+  fileName: String
+  description: String
+  doctor: Doctor @connection(fields: ["doctorId"])
+  patient: Patient @connection(fields: ["patientId"])
+}
+
+type Appointment @model {
+  id: ID!
+  patientId: ID!
+  doctorId: ID!
+  appointmentDate: AWSDate!
+  appointmentTime: AWSTime! 
+  description: String!
+  patient: Patient @connection(fields: ["patientId"])
+  doctor: Doctor @connection(fields: ["doctorId"])
+}
+
+type Service @model {
+  id: ID!
+  serviceName: String!
+  serviceDescription: String
+  }

@@ -1,0 +1,60 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "authSelections": "identityPoolAndUserPool",
+    "requiredAttributes": [
+      "email"
+    ],
+    "resourceName": "invinciblescmpe2726173a9cd",
+    "serviceName": "Cognito",
+    "useDefault": "manual",
+    "userpoolClientReadAttributes": [
+      "email",
+      "family_name",
+      "given_name",
+      "phone_number",
+      "email_verified"
+    ],
+    "userpoolClientWriteAttributes": [
+      "family_name",
+      "given_name",
+      "phone_number",
+      "email"
+    ],
+    "aliasAttributes": [],
+    "resourceNameTruncated": "cmpe286173a9cd",
+    "sharedId": "6173a9cd",
+    "userPoolGroupList": [
+      "Users",
+      "Admins"
+    ],
+    "userPoolGroups": true,
+    "userPoolName": "invinciblescmpe2726173a9cd_userpool_6173a9cd",
+    "usernameCaseSensitive": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientSetAttributes": true,
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientLambdaRole": "cmpe286173a9cd_userpoolclient_lambda_role",
+    "passwordPolicyCharacters": [],
+    "passwordPolicyMinLength": 8,
+    "adminQueries": true,
+    "adminQueryGroup": "Admins",
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "hostedUI": false,
+    "thirdPartyAuth": false,
+    "identityPoolName": "invinciblescmpe2726173a9cd_identitypool_6173a9cd",
+    "allowUnauthenticatedIdentities": true,
+    "authProviders": [],
+    "triggers": {}
+  }
+} 

@@ -1,0 +1,448 @@
+type Patient {
+  id: ID!
+  firstName: String!
+  lastName: String
+  insuranceNumber: String
+  ssn: String
+  birthDate: AWSDateTime!
+  phone: String
+  address: String
+  sex: String
+  email: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Doctor {
+  id: ID!
+  firstName: String!
+  lastName: String
+  phone: String
+  address: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Prescription {
+  id: ID!
+  appointmentId: ID!
+  patientId: ID!
+  doctorId: ID
+  fileName: String
+  description: String
+  doctor: Doctor
+  patient: Patient
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Appointment {
+  id: ID!
+  patientId: ID!
+  doctorId: ID!
+  appointmentDate: AWSDate!
+  appointmentTime: AWSTime!
+  description: String!
+  patient: Patient
+  doctor: Doctor
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Service {
+  id: ID!
+  serviceName: String!
+  serviceDescription: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelPatientConnection {
+  items: [Patient]!
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelPatientFilterInput {
+  id: ModelIDInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  insuranceNumber: ModelStringInput
+  ssn: ModelStringInput
+  birthDate: ModelStringInput
+  phone: ModelStringInput
+  address: ModelStringInput
+  sex: ModelStringInput
+  email: ModelStringInput
+  and: [ModelPatientFilterInput]
+  or: [ModelPatientFilterInput]
+  not: ModelPatientFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Query {
+  getPatient(id: ID!): Patient
+  listPatients(filter: ModelPatientFilterInput, limit: Int, nextToken: String): ModelPatientConnection
+  getDoctor(id: ID!): Doctor
+  listDoctors(filter: ModelDoctorFilterInput, limit: Int, nextToken: String): ModelDoctorConnection
+  getPrescription(id: ID!): Prescription
+  listPrescriptions(filter: ModelPrescriptionFilterInput, limit: Int, nextToken: String): ModelPrescriptionConnection
+  getAppointment(id: ID!): Appointment
+  listAppointments(filter: ModelAppointmentFilterInput, limit: Int, nextToken: String): ModelAppointmentConnection
+  getService(id: ID!): Service
+  listServices(filter: ModelServiceFilterInput, limit: Int, nextToken: String): ModelServiceConnection
+}
+
+input CreatePatientInput {
+  id: ID
+  firstName: String!
+  lastName: String
+  insuranceNumber: String
+  ssn: String
+  birthDate: AWSDateTime!
+  phone: String
+  address: String
+  sex: String
+  email: String!
+}
+
+input UpdatePatientInput {
+  id: ID!
+  firstName: String
+  lastName: String
+  insuranceNumber: String
+  ssn: String
+  birthDate: AWSDateTime
+  phone: String
+  address: String
+  sex: String
+  email: String
+}
+
+input DeletePatientInput {
+  id: ID!
+}
+
+type Mutation {
+  createPatient(input: CreatePatientInput!, condition: ModelPatientConditionInput): Patient
+  updatePatient(input: UpdatePatientInput!, condition: ModelPatientConditionInput): Patient
+  deletePatient(input: DeletePatientInput!, condition: ModelPatientConditionInput): Patient
+  createDoctor(input: CreateDoctorInput!, condition: ModelDoctorConditionInput): Doctor
+  updateDoctor(input: UpdateDoctorInput!, condition: ModelDoctorConditionInput): Doctor
+  deleteDoctor(input: DeleteDoctorInput!, condition: ModelDoctorConditionInput): Doctor
+  createPrescription(input: CreatePrescriptionInput!, condition: ModelPrescriptionConditionInput): Prescription
+  updatePrescription(input: UpdatePrescriptionInput!, condition: ModelPrescriptionConditionInput): Prescription
+  deletePrescription(input: DeletePrescriptionInput!, condition: ModelPrescriptionConditionInput): Prescription
+  createAppointment(input: CreateAppointmentInput!, condition: ModelAppointmentConditionInput): Appointment
+  updateAppointment(input: UpdateAppointmentInput!, condition: ModelAppointmentConditionInput): Appointment
+  deleteAppointment(input: DeleteAppointmentInput!, condition: ModelAppointmentConditionInput): Appointment
+  createService(input: CreateServiceInput!, condition: ModelServiceConditionInput): Service
+  updateService(input: UpdateServiceInput!, condition: ModelServiceConditionInput): Service
+  deleteService(input: DeleteServiceInput!, condition: ModelServiceConditionInput): Service
+}
+
+input ModelPatientConditionInput {
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  insuranceNumber: ModelStringInput
+  ssn: ModelStringInput
+  birthDate: ModelStringInput
+  phone: ModelStringInput
+  address: ModelStringInput
+  sex: ModelStringInput
+  email: ModelStringInput
+  and: [ModelPatientConditionInput]
+  or: [ModelPatientConditionInput]
+  not: ModelPatientConditionInput
+}
+
+type Subscription {
+  onCreatePatient: Patient @aws_subscribe(mutations: ["createPatient"])
+  onUpdatePatient: Patient @aws_subscribe(mutations: ["updatePatient"])
+  onDeletePatient: Patient @aws_subscribe(mutations: ["deletePatient"])
+  onCreateDoctor: Doctor @aws_subscribe(mutations: ["createDoctor"])
+  onUpdateDoctor: Doctor @aws_subscribe(mutations: ["updateDoctor"])
+  onDeleteDoctor: Doctor @aws_subscribe(mutations: ["deleteDoctor"])
+  onCreatePrescription: Prescription @aws_subscribe(mutations: ["createPrescription"])
+  onUpdatePrescription: Prescription @aws_subscribe(mutations: ["updatePrescription"])
+  onDeletePrescription: Prescription @aws_subscribe(mutations: ["deletePrescription"])
+  onCreateAppointment: Appointment @aws_subscribe(mutations: ["createAppointment"])
+  onUpdateAppointment: Appointment @aws_subscribe(mutations: ["updateAppointment"])
+  onDeleteAppointment: Appointment @aws_subscribe(mutations: ["deleteAppointment"])
+  onCreateService: Service @aws_subscribe(mutations: ["createService"])
+  onUpdateService: Service @aws_subscribe(mutations: ["updateService"])
+  onDeleteService: Service @aws_subscribe(mutations: ["deleteService"])
+}
+
+type ModelDoctorConnection {
+  items: [Doctor]!
+  nextToken: String
+}
+
+input ModelDoctorFilterInput {
+  id: ModelIDInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  phone: ModelStringInput
+  address: ModelStringInput
+  and: [ModelDoctorFilterInput]
+  or: [ModelDoctorFilterInput]
+  not: ModelDoctorFilterInput
+}
+
+input CreateDoctorInput {
+  id: ID
+  firstName: String!
+  lastName: String
+  phone: String
+  address: String
+}
+
+input UpdateDoctorInput {
+  id: ID!
+  firstName: String
+  lastName: String
+  phone: String
+  address: String
+}
+
+input DeleteDoctorInput {
+  id: ID!
+}
+
+input ModelDoctorConditionInput {
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  phone: ModelStringInput
+  address: ModelStringInput
+  and: [ModelDoctorConditionInput]
+  or: [ModelDoctorConditionInput]
+  not: ModelDoctorConditionInput
+}
+
+type ModelPrescriptionConnection {
+  items: [Prescription]!
+  nextToken: String
+}
+
+input ModelPrescriptionFilterInput {
+  id: ModelIDInput
+  appointmentId: ModelIDInput
+  patientId: ModelIDInput
+  doctorId: ModelIDInput
+  fileName: ModelStringInput
+  description: ModelStringInput
+  and: [ModelPrescriptionFilterInput]
+  or: [ModelPrescriptionFilterInput]
+  not: ModelPrescriptionFilterInput
+}
+
+input CreatePrescriptionInput {
+  id: ID
+  appointmentId: ID!
+  patientId: ID!
+  doctorId: ID
+  fileName: String
+  description: String
+}
+
+input UpdatePrescriptionInput {
+  id: ID!
+  appointmentId: ID
+  patientId: ID
+  doctorId: ID
+  fileName: String
+  description: String
+}
+
+input DeletePrescriptionInput {
+  id: ID!
+}
+
+input ModelPrescriptionConditionInput {
+  appointmentId: ModelIDInput
+  patientId: ModelIDInput
+  doctorId: ModelIDInput
+  fileName: ModelStringInput
+  description: ModelStringInput
+  and: [ModelPrescriptionConditionInput]
+  or: [ModelPrescriptionConditionInput]
+  not: ModelPrescriptionConditionInput
+}
+
+type ModelAppointmentConnection {
+  items: [Appointment]!
+  nextToken: String
+}
+
+input ModelAppointmentFilterInput {
+  id: ModelIDInput
+  patientId: ModelIDInput
+  doctorId: ModelIDInput
+  appointmentDate: ModelStringInput
+  appointmentTime: ModelStringInput
+  description: ModelStringInput
+  and: [ModelAppointmentFilterInput]
+  or: [ModelAppointmentFilterInput]
+  not: ModelAppointmentFilterInput
+}
+
+input CreateAppointmentInput {
+  id: ID
+  patientId: ID!
+  doctorId: ID!
+  appointmentDate: AWSDate!
+  appointmentTime: AWSTime!
+  description: String!
+}
+
+input UpdateAppointmentInput {
+  id: ID!
+  patientId: ID
+  doctorId: ID
+  appointmentDate: AWSDate
+  appointmentTime: AWSTime
+  description: String
+}
+
+input DeleteAppointmentInput {
+  id: ID!
+}
+
+input ModelAppointmentConditionInput {
+  patientId: ModelIDInput
+  doctorId: ModelIDInput
+  appointmentDate: ModelStringInput
+  appointmentTime: ModelStringInput
+  description: ModelStringInput
+  and: [ModelAppointmentConditionInput]
+  or: [ModelAppointmentConditionInput]
+  not: ModelAppointmentConditionInput
+}
+
+type ModelServiceConnection {
+  items: [Service]!
+  nextToken: String
+}
+
+input ModelServiceFilterInput {
+  id: ModelIDInput
+  serviceName: ModelStringInput
+  serviceDescription: ModelStringInput
+  and: [ModelServiceFilterInput]
+  or: [ModelServiceFilterInput]
+  not: ModelServiceFilterInput
+}
+
+input CreateServiceInput {
+  id: ID
+  serviceName: String!
+  serviceDescription: String
+}
+
+input UpdateServiceInput {
+  id: ID!
+  serviceName: String
+  serviceDescription: String
+}
+
+input DeleteServiceInput {
+  id: ID!
+}
+
+input ModelServiceConditionInput {
+  serviceName: ModelStringInput
+  serviceDescription: ModelStringInput
+  and: [ModelServiceConditionInput]
+  or: [ModelServiceConditionInput]
+  not: ModelServiceConditionInput
+}
