@@ -113,6 +113,140 @@ export default function Patient() {
     }
     
 
+    return (
+        <div className='patient'>
+          <div className='container info-holder'>
+            <div className="name-container">
+              <p className='name'>
+                {patient.firstName} {patient.lastName}
+                <span style={{verticalAlign: 'text-bottom'}}><FaIcons.FaEdit style={{cursor: 'pointer'}} onClick={() => openUpdatePatientModal(patient)}/></span>
+              </p>
+              <p className='name'>Email - {patient.email}</p>
+              <p>Phone - {patient.phone}</p>
+              <p>Address - {patient.address}</p>
+              <p>DOB - {patient.birthDate ? patient.birthDate.substring(0,"yyy-mm-dd".length+1) : ""}</p>
+              <p>Insurance - {patient.insuranceNumber}</p>
+            </div>
+          </div>
+              <ModalPatient
+                  show={updateModalShow}
+                  patient={selectedPatient}
+                  onUpdated={() => getPatientInformation(patient.id)}
+                  onHide={() => setUpdateModalShow(false)}
+                />
 
+        <div className='container'>
+          <h5 className='text-left'>Treatments</h5>
+          <Button 
+            className='appointment-btn'
+            variant="success"
+            size="sm"
+            onClick={() => openAppointment(patient)}
+          >
+            Take Another Appointment
+          </Button>
+          <Tabs
+            defaultActiveKey="upcoming"
+            id="uncontrolled-tab-example"
+            className="mb-3"
+          >
+            <Tab eventKey="ongoing" title="Ongoing">
+              <div className="home">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Treated by</th>
+                    <th>Prescription</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+              <tbody>
+              {
+              prescrriptions.map(prescrription => (
+                
+                    <tr key={prescrription.id} >
+                      <td>{prescrription.doctor != null ? prescrription.doctor.firstName +" "+prescrription.doctor.lastName : ""}</td>
+                      <td>
+                            {
+                              prescrription.content && <a href={prescrription.content} download={prescrription.fileName}>
+                                {
+                                
+                                  <AmplifyS3Image level="public" imgKey={prescrription.fileName} alt={prescrription.fileName.slice(prescrription.fileName.lastIndexOf('/') + 1)} /> 
+                                }
+                              </a>
+                            }
+                          </td>
+                      <td>{prescrription.description != null ?  prescrription.description : ""} </td>              
+                    </tr>
+                  ))
+                }
+              </tbody>
+              </table>
+              </div>
+            </Tab>
+            <Tab eventKey="upcoming" title="Upcoming">
+              <div className="profile">
+              <table>
+                <thead>
+                  <tr>
+                  <th>Time of Appointment</th><th>Date of Appointment</th><th>Doctor Appointed</th><th> Condition</th>
+                    <th>Action to taken</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {
+                appntmnts.map(appntmnt => (
+                      <tr key={appntmnt.id || appntmnt.appointmentDate} >
+                        <td>{appntmnt.appointmentDate}</td>
+                        <td>{appntmnt.appointmentTime}</td>
+                        <td> {appntmnt.doctor != null ? appntmnt.doctor.firstName +" "+appntmnt.doctor.lastName : ""}</td>
+                        <td>{appntmnt.description != null ?  appntmnt.description : ""} </td>
+                        <td><button onClick={() => deleteAppntmntById(appntmnt)}>Delete</button></td>
+                        
+                      </tr>
+                    ))
+                  }
+                </tbody>
+              </table>
+              </div>
+            </Tab>
+          </Tabs>
+        </div>
+            <div style={{marginTop: '10px'}}>
+              <Container>
+              
+              </Container>
+          
+            </div>
+
+            <Appointment
+                  show={updateAppointmentModal}
+                  patient={selectedPatient}
+                  onUpdated={() => getPatientInformation(patient.id)}
+                  onHide={() => onHideAppntmntModal(patient)}
+                />
+        </div>
+    );
+
+
+    async function fetchAppntmnts(userName) {
+      try {
+        var date = new Date();
+        var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+          const apiData = await API.graphql({ query: listPatientAppointment, variables: { patientId: userName ,appointmentDate: dateString }  });
+          console.log(apiData.data.listAappntmnts.items);
+          function sortFunction(a, b) {
+            return a.appointmentDate < b.appointmentDate ? 1 : -1;
+          }
+          const sortedData = apiData.data.listAappntmnts.items.sort(sortFunction);
+          setAppntmnts(sortedData);
+      }catch(e){
+          console.error('error while fetching appntmnts', e);
+          setErrorMessages(e.errors);
+      }
+      
+    }
 }
 
