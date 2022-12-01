@@ -1,0 +1,53 @@
+{
+  "sampledev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-invinciblescmpe272-sampledev-163219-authRole",
+      "UnauthRoleArn": "arn:aws:iam::130140781510:role/amplify-invinciblescmpe272-sampledev-163219-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::130140781510:role/amplify-invinciblescmpe272-sampledev-163219-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-invinciblescmpe272-sampledev-163219-deployment",
+      "UnauthRoleName": "amplify-invinciblescmpe272-sampledev-163219-unauthRole",
+      "StackName": "amplify-invinciblescmpe272-sampledev-163219",
+      "StackId": "arn:aws:cloudformation:us-east-1:130140781510:stack/amplify-invinciblescmpe272-sampledev-163219/f4f13350-6933-11ed-8244-0ecc6e1008cb",
+      "AmplifyAppId": "d2iqg6y9zg5j7n"
+    },
+    "categories": {
+      "auth": {
+        "invinciblescmpe2726173a9cd": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "S3Triggerc8c424e6": {
+          "deploymentBucketName": "amplify-invinciblescmpe272-sampledev-163219-deployment",
+          "s3Key": "amplify-builds/S3Triggerc8c424e6-444d62376473686c3553-build.zip"
+        },
+        "AdminQueriesf1ae536e": {
+          "deploymentBucketName": "amplify-invinciblescmpe272-sampledev-163219-deployment",
+          "s3Key": "amplify-builds/AdminQueriesf1ae536e-573171714e395a657a38-build.zip"
+        },
+        "jwtauth": {
+          "deploymentBucketName": "amplify-invinciblescmpe272-sampledev-163219-deployment",
+          "s3Key": "amplify-builds/jwtauth-666f732f76656474484d-build.zip"
+        },
+        "AppointmentEmail": {
+          "deploymentBucketName": "amplify-invinciblescmpe272-sampledev-163219-deployment",
+          "s3Key": "amplify-builds/AppointmentEmail-3842794c365068577a4e-build.zip"
+        },
+        "invinciblescmpe2726173a9cd": {},
+        "invinciblescmpe272": {}
+      },
+      "interactions": {
+        "DoctorBot": {
+          "deploymentBucketName": "amplify-invinciblescmpe272-sampledev-163219-deployment",
+          "s3Key": "amplify-builds/DoctorBot-717731384f4e57704352-build.zip"
+        }
+      },
+      "api": {
+        "invinciblescmpe272": {}
+      },
+      "storage": {
+        "contentStore": {}
+      }
+    }
+  }
+}
