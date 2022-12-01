@@ -94,5 +94,73 @@ export default function BookAppointment(props) {
       
     }
   
-
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        centered
+        aria-labelledby="contained-modal-title-vcenter"
+      >
+        <Modal.Header closeButton>
+  
+          <Modal.Title id="contained-modal-title-vcenter">
+            Appointment Info
+          </Modal.Title>
+        </Modal.Header>
+  
+        <Modal.Body>
+          <Form onSubmit={(event)=>formDataSubmit(event.preventDefault())}>
+          <Form.Group controlId="doctorId">
+              <Form.Label>Choose Doctor</Form.Label>
+              <Form.Control 
+              as="select" onChange={(event)=>setPrefDoc(event.target.value)}
+              >
+                <option key="" value="preferred doctor"> Preferred Doctor</option>
+                     {
+            doc.map(doctor => (
+                   <option  key={doctor.id || doctor.firstName} value={doctor.id}>{doctor.firstName} {doctor.lastName}</option>  
+                  
+                ))
+              }  
+  
+              </Form.Control>
+          </Form.Group>
+            <Form.Group controlId="appDate">
+              <Form.Label>Date of Appointment</Form.Label>
+              <Form.Control
+                onChange={(event)=>setAppDate(event.target.value)}
+                value={appDate}
+                type="date"
+              />
+            </Form.Group>
+            <Form.Group controlId="appTime">
+              <Form.Label>Time of Appointment (Doctors are available between 09:00 AM and 06:00 PM)</Form.Label>
+              <Form.Control
+                min="09:00" max="18:00"
+                value={appTime}
+                onChange={(event)=>setAppTime(event.target.value)}
+                type="time"
+                required />
+            </Form.Group>   
+  
+          <Form.Group controlId="description">
+              <Form.Label>Visit Reason</Form.Label>
+              <Form.Control
+                
+                value={visitReason}
+                onChange={(e)=>setVisitReason(e.target.value)}
+                type="text"
+              />
+            </Form.Group>  
+  
+            <Button block type="submit" size="lg" >
+              Book Now
+            </Button>
+  
+          </Form>
+  
+        </Modal.Body>
+  
+      </Modal>
+    );
 }
