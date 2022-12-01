@@ -44,6 +44,37 @@ export default function ModalDoctor(props) {
         </Modal.Title>
       </Modal.Header>
 
+      <Modal.Body>
+
+        <Form onSubmit={formDataSubmit}>
+
+        <Form.Group controlId="address">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              type="text"
+              onChange={onChangeData}
+              placeholder={props.doctor.address}
+              value={formData.address}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="phone">
+            <Form.Label>Mobile Number</Form.Label>
+            <Form.Control
+              type="text"
+              onChange={onChangeData}
+              placeholder={props.doctor.phone}
+              value={formData.phone}
+            />
+          </Form.Group>
+          <Button block type="submit" size="lg">
+            Update
+          </Button>
+
+        </Form>
+
+      </Modal.Body>
+
     </Modal>
   );
 }
