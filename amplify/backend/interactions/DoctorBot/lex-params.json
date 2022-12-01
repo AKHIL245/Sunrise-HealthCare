@@ -1,0 +1,47 @@
+{
+    "resourceName": "DoctorBot",
+    "botName": "DoctorBot",
+    "intents": [
+        {
+            "slots": [
+                {
+                    "name": "FirstName",
+                    "type": "AMAZON.US_FIRST_NAME",
+                    "prompt": "What is the first name?",
+                    "required": true,
+                    "customType": false
+                },
+                {
+                    "name": "LastName",
+                    "type": "AMAZON.US_LAST_NAME",
+                    "prompt": "What is the last name?",
+                    "required": true,
+                    "customType": false
+                },
+                {
+                    "name": "PhoneNumber",
+                    "type": "AMAZON.PhoneNumber",
+                    "prompt": "What is the phone number?",
+                    "required": true,
+                    "customType": false
+                },
+                {
+                    "name": "City",
+                    "type": "AMAZON.US_CITY",
+                    "prompt": "What city?",
+                    "required": true,
+                    "customType": false
+                }
+            ],
+            "utterances": [
+                "Create doctor",
+                "New doctor"
+            ],
+            "intentName": "CreateDoctor",
+            "newSlotTypes": []
+        }
+    ],
+    "outputVoice": "Matthew",
+    "sessionTimeout": 5,
+    "coppa": false
+}

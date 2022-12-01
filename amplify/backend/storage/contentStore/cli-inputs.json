@@ -1,0 +1,20 @@
+{
+  "resourceName": "contentStore",
+  "bucketName": "invinciblescmpe272-content-store",
+  "policyUUID": "28476e7a",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {
+    "Admins": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ]
+  }
+}

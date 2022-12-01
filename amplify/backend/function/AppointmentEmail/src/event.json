@@ -1,0 +1,52 @@
+{
+  "Records": [
+    {
+      "eventID": "5e117e4d2cdc00fe359b0a330dbb9aaa",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-west-2",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1637109171,
+        "Keys": {
+          "id": {
+            "S": "d18343f8-6564-476f-9652-43fdbcf85b63"
+          }
+        },
+        "NewImage": {
+          "createdAt": {
+            "S": "2021-11-17T00:32:51.059Z"
+          },
+          "appointmentTime": {
+            "S": "17:32"
+          },
+          "doctorId": {
+            "S": "larry"
+          },
+          "patientId": {
+            "S": "larry"
+          },
+          "__typename": {
+            "S": "Appointment"
+          },
+          "description": {
+            "S": "test"
+          },
+          "id": {
+            "S": "d18343f8-6564-476f-9652-43fdbcf85b63"
+          },
+          "appointmentDate": {
+            "S": "2021-11-17"
+          },
+          "updatedAt": {
+            "S": "2021-11-17T00:32:51.059Z"
+          }
+        },
+        "SequenceNumber": "32610000000000038871388494",
+        "SizeBytes": 250,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-west-2:146838423249:table/Appointment-3fpg5psmbbcuzbhfrnty72ryh4-sampledev/stream/2021-11-10T01:01:04.393"
+    }
+  ]
+}
