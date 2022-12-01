@@ -84,5 +84,15 @@ export default function BookAppointment(props) {
         }
     }
   
+    async function getAllDoctors() {
+      try {
+          const backendData = await Backendcall.graphql({ query: getAllDoctors });
+          setDoc(backendData.data.listDoctors.items);
+      }catch(error){
+          setError(error.errors);
+      }
+      
+    }
+  
 
 }
