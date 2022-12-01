@@ -67,3 +67,8 @@
 
 /* End Inputs */
 
+.small.form-group {
+	width: 48%;
+	display: inline-block;
+	float: left;
+  }
