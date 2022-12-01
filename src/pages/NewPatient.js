@@ -74,5 +74,59 @@ export default function NewPatient() {
         })
         .catch((e) => console.log("Not signed in", e));
     }
-    
+    function renderForm() {
+      return (
+        <div>
+        
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="firstName" className='small'  size="md">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" value={fields.firstName} onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="lastName" className='small'  size="md">
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control type="text" value={fields.lastName} onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="insuranceNumber" size="md">
+            <Form.Label>Insurance Number</Form.Label>
+            <Form.Control type="text" value={fields.insuranceNumber} onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="phone" size="md">
+            <Form.Label>Phone</Form.Label>
+            <Form.Control type="text" value={fields.phone} onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="email" size="md">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="text" value={fields.email} onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="address" size="md">
+            <Form.Label>Address</Form.Label>
+            <Form.Control type="text" value={fields.address} onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="birthDate" size="md">
+            <Form.Label>Birth date</Form.Label>
+            <Form.Control type="date" value={fields.birthDate} onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="sex" size="md">
+            <Form.Label>Sex</Form.Label>
+            <Form.Control  type="text"value={fields.sex} onChange={handleChange}
+            />
+          </Form.Group>
+         
+          <Button block className="btn-theme" size="md" type="submit" disabled={!validate()}>
+            Register
+          </Button>
+        </Form>
+        </div>
+      );
+    }
+  
+    return <div className="createpatient"> <h5>REGISTRATION</h5> {renderForm()} </div>;
 }
