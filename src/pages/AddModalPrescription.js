@@ -40,5 +40,42 @@ export default function AddModalPrescription(props) {
     refFile.current = e.target.files[0];
   }
 
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      centered
+      aria-labelledby="contained-modal-title-vcenter"
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Upload Prescription For Patient
+        </Modal.Title>
+      </Modal.Header>
 
+      <Modal.Body>
+        <Form onSubmit={formSubmit}>
+        <Form.Group controlId="file">
+            <Form.Label>Upload Prescription</Form.Label>
+            <Form.Control onChange={onFileUpload} type="file" />
+          </Form.Group>
+          <Form.Group controlId="description">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              onChange={onChangeData}
+              type="text"
+              value={formData.description}
+            />
+          </Form.Group>
+
+          <Button block type="submit" size="lg" >
+            Upload
+          </Button>
+
+        </Form>
+
+      </Modal.Body>
+
+    </Modal>
+  );
 }
