@@ -123,7 +123,23 @@ export default function AllPatients() {
     alert("Patient record has been Deleted");
 
   }
+  async function listInfoOfPatients() {
+    try {
+      const apiData = await API.graphql({ query: listInfoOfPatients });
 
+      console.log(apiData);
+
+      if (apiData.data.listInfoOfPatients.items == null) {
+        history.push('/createpatient')
+      }
+
+      setListPat(apiData.data.listInfoOfPatients.items);
+
+    } catch (e) {
+      console.log("Error while fetching Patient Information", e);
+    }
+
+  }
  
   
 }
