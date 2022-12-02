@@ -47,6 +47,8 @@ export default function AllPatients() {
         lastName: apiData.data.getPatient.lastName,
         birthDate: apiData.data.getPatient.birthDate,
         phoneNumber: apiData.data.getPatient.phoneNumber,
+        sex: apiData.data.getPatient.sex,
+        ssn: apiData.data.getPatient.ssn,
         insuranceNumber: apiData.data.getPatient.insuranceNumber,
         address: apiData.data.getPatient.address
       });
