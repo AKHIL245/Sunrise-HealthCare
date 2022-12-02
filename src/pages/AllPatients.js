@@ -112,6 +112,18 @@ export default function AllPatients() {
       </Row>
     </div>
   )
+  async function deletePatientInformation(id) {
+    try {
+      await API.graphql({ query: deletePatientInformation, variables: { input: { id: id } } });
+    } catch (e) {
+      console.error('error while deleting patient', e);
+      setErrorMessages(e.errors);
+    }
+    listInfoOfPatients();
+    alert("Patient record has been Deleted");
 
+  }
+
+ 
   
 }
