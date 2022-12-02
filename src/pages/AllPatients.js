@@ -62,7 +62,7 @@ export default function AllPatients() {
 
   return (
     <div>
-      <h5 >Patients</h5>
+      <h5 style={{marginTop: '10px', marginBottom: '10px'}}>Patients</h5>
       <Row>
         <Table striped bordered hover>
           <thead>
