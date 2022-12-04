@@ -1,1 +1,2 @@
-# cmpe272_HMS
+## Team Invincibles - Sunrise Healthcare (Hospital Management system)  - CMPE 272 Project
+
