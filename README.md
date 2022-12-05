@@ -1,6 +1,6 @@
-## Team Invincibles - Sunrise Healthcare (Hospital Management system)  - CMPE 272 Project
+# Team Invincibles - Sunrise Healthcare (Hospital Management system)  - CMPE 272 Project
 
-##Team Members
+## Team Members
 Priyanka Turumalla<br/>
 Sri Akhil Thaneti<br/>
 Sai Sanketh Ravva<br/>
